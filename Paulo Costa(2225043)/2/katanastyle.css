@@ -1,0 +1,299 @@
+    :root {
+      --ink: #1a1008;
+      --paper: #f0ece0;
+      --washi: #ede3cc;
+      --red: #c0392b;
+      --red-dark: #8b1a1a;
+      --gold: #b8860b;
+      --muted: #7a6a50;
+      --steel: #4a5260;
+      --border: rgba(26,16,8,0.15);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'IM Fell English', serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 1000; opacity: 0.6;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+      background: rgba(240,236,224,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border); height: 64px;
+      display: flex; align-items: center;
+    }
+    .nav-inner {
+      width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 3rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { font-family: 'Noto Serif JP', serif; font-size: 1.4rem; color: var(--red); text-decoration: none; }
+    .nav-links { display: flex; gap: 3rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--muted); text-decoration: none;
+      position: relative; transition: color 0.3s;
+    }
+    .nav-links a.active { color: var(--red); }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--red); transition: width 0.35s ease; }
+    .nav-links a:hover { color: var(--red); }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+    /* DRAMATIC HERO */
+    .blade-hero {
+      min-height: 50vh;
+      padding: 140px 3rem 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: end;
+      gap: 4rem;
+      position: relative;
+    }
+
+    .blade-hero::after {
+      content: '刀';
+      font-family: 'Noto Serif JP', serif;
+      font-size: 30vw;
+      font-weight: 700;
+      color: var(--steel);
+      opacity: 0.04;
+      position: absolute;
+      right: -3vw;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      line-height: 1;
+    }
+
+    /* Decorative blade line */
+    .blade-line {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(74,82,96,0.2), transparent);
+      pointer-events: none;
+    }
+
+    .header-label {
+      font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.4em;
+      text-transform: uppercase; color: var(--red); display: flex;
+      align-items: center; gap: 1rem; margin-bottom: 1.5rem;
+    }
+    .header-label::before { content: '二'; font-family: 'Noto Serif JP', serif; font-size: 1.2rem; opacity: 0.5; }
+
+    h1.page-title {
+      font-family: 'Noto Serif JP', serif; font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 300; line-height: 1.1; color: var(--ink);
+    }
+    h1.page-title em {
+      font-style: normal; font-size: 1.5rem; color: var(--muted);
+      display: block; margin-top: 0.5rem; font-family: 'IM Fell English', serif; font-style: italic;
+    }
+
+    .header-text { font-size: 1.05rem; line-height: 1.85; color: var(--muted); font-style: italic; }
+    .header-text p + p { margin-top: 1rem; }
+
+    /* DIVIDER */
+    .section-divider {
+      max-width: 1200px; margin: 0 auto; padding: 0 3rem;
+      display: flex; align-items: center; gap: 2rem; margin-bottom: 5rem;
+    }
+    .section-divider::before, .section-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .divider-kanji { font-family: 'Noto Serif JP', serif; font-size: 1.2rem; color: var(--red); opacity: 0.4; }
+
+    /* CONTENT */
+    .content { max-width: 1200px; margin: 0 auto; padding: 0 3rem; }
+    .section { margin-bottom: 7rem; }
+
+    .section-label {
+      font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.4em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: block;
+    }
+
+    h2.section-title {
+      font-family: 'Noto Serif JP', serif; font-size: 2.2rem; font-weight: 400;
+      color: var(--ink); margin-bottom: 2rem; position: relative; padding-left: 1.5rem;
+    }
+    h2.section-title::before {
+      content: ''; position: absolute; left: 0; top: 0.2em;
+      width: 3px; height: 1.4em; background: var(--red);
+    }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+
+    p.body-text { font-size: 1rem; line-height: 1.9; color: var(--muted); font-style: italic; }
+    p.body-text + p.body-text { margin-top: 1.2rem; }
+
+    /* BLADE ANATOMY */
+    .anatomy-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .anatomy-item {
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.3);
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      transition: background 0.3s;
+    }
+
+    .anatomy-item:hover { background: rgba(255,255,255,0.55); }
+
+    .anatomy-num {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.5rem;
+      color: var(--red);
+      opacity: 0.4;
+      flex-shrink: 0;
+      line-height: 1.2;
+    }
+
+    .anatomy-item h3 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .anatomy-item p {
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* FORGE STEPS */
+    .forge-steps {
+      counter-reset: step;
+    }
+
+    .forge-step {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      align-items: start;
+    }
+
+    .step-num {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--red);
+      opacity: 0.25;
+      text-align: right;
+      line-height: 1;
+    }
+
+    .forge-step h3 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
+
+    .forge-step p {
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* QUOTE */
+    blockquote.washi-quote {
+      border-left: 3px solid var(--red);
+      padding: 1.5rem 2rem;
+      margin: 3rem 0;
+      background: rgba(74,82,96,0.05);
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--ink);
+      line-height: 1.8;
+    }
+    blockquote.washi-quote cite {
+      display: block; margin-top: 0.75rem; font-size: 0.75rem;
+      letter-spacing: 0.2em; font-family: 'Cinzel', serif;
+      font-style: normal; color: var(--muted); text-transform: uppercase;
+    }
+
+    /* KATANA TYPES */
+    .sword-types {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .sword-card {
+      padding: 2.5rem 2rem;
+      background: rgba(255,255,255,0.3);
+      border: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+
+    .sword-card:hover { background: rgba(255,255,255,0.55); }
+
+    .sword-card .sword-kanji {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 2.8rem;
+      color: var(--steel);
+      opacity: 0.35;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .sword-card h3 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.15rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .sword-card .sword-sub {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .sword-card p {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* FOOTER */
+    .back-nav { max-width: 1200px; margin: 0 auto 2rem; padding: 0 3rem; }
+    .back-link { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.3s; }
+    .back-link:hover { color: var(--red); }
+
+    footer { margin-top: 6rem; padding: 3rem; border-top: 1px solid var(--border); text-align: center; }
+    .footer-kanji { font-family: 'Noto Serif JP', serif; font-size: 2rem; color: var(--red); opacity: 0.3; display: block; margin-bottom: 1rem; }
+    footer p { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.3em; color: var(--muted); text-transform: uppercase; }
+
+    @media (max-width: 768px) {
+      .blade-hero, .two-col { grid-template-columns: 1fr; }
+      .anatomy-grid, .sword-types { grid-template-columns: 1fr; }
+      .content, .nav-inner, .back-nav, .section-divider { padding: 0 1.5rem; }
+      .blade-hero { padding: 120px 1.5rem 60px; }
+    }
