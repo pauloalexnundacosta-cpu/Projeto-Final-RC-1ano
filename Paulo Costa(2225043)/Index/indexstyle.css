@@ -1,11 +1,10 @@
    :root {
       --ink: #1a1008;
-      --paper: #f5efe0;
       --washi: #ede3cc;
       --red: #c0392b;
       --red-dark: #8b1a1a;
       --gold: #b8860b;
-      --muted: #7a6a50;
+      --muted: #363025;
       --border: rgba(26,16,8,0.15);
     }
 
@@ -14,14 +13,15 @@
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--paper);
+      background-image: url(imagensindex/indexback.jpg); 
       color: var(--ink);
       font-family: 'IM Fell English', serif;
       min-height: 100vh;
       overflow-x: hidden;
+      
     }
 
-    /* Washi texture overlay */
+    /* textura overlay */
     body::before {
       content: '';
       position: fixed;
@@ -31,9 +31,10 @@
       pointer-events: none;
       z-index: 1000;
       opacity: 0.6;
+      background-filter: blur(2.8px);
     }
 
-    /* NAV */
+    /* NAVes */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -94,7 +95,7 @@
     .nav-links a:hover::after { width: 100%; }
 
 
-    .hero {
+    .caixinha {
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -105,38 +106,21 @@
     }
 
 
-    .hero::before {
-      content: '○';
-      font-family: 'Noto Serif JP', serif;
-      position: absolute;
-      font-size: 72vw;
-      color: rgba(192,57,43,0.04);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -52%);
-      pointer-events: none;
-      line-height: 1;
-    }
-
-    /* Vertical red stripe */
-    .hero::after {
+    /* linha vertical */
+    .caixinha::after { 
       content: '';
-      position: absolute;
-      top: 0; right: 12vw;
-      width: 2px;
-      height: 100%;
-      background: linear-gradient(to bottom, transparent, var(--red) 20%, var(--red) 80%, transparent);
-      opacity: 0.25;
+      opacity: 0.3;
     }
 
-    .hero-content {
+
+    .caixinha-content {
       text-align: center;
       position: relative;
       z-index: 10;
       animation: fadeUp 1.2s ease both;
     }
 
-    .hero-kanji {
+    .caixinha-kanji {
       font-family: 'Noto Serif JP', serif;
       font-size: clamp(5rem, 18vw, 14rem);
       font-weight: 300;
@@ -152,32 +136,34 @@
       animation: fadeIn 2s ease both;
     }
 
-    .hero-eyebrow {
+    .caixinha-eyebrow {
       font-family: 'Cinzel', serif;
-      font-size: 0.7rem;
+      font-size: 0.8rem;
       letter-spacing: 0.4em;
       text-transform: uppercase;
       color: var(--muted);
+      font-style: bold;
+      font-weight: bold;
       margin-bottom: 2rem;
       animation: fadeUp 1s 0.2s ease both;
     }
 
-    .hero-title {
+    .caixinha-titulo {
       font-family: 'Noto Serif JP', serif;
       font-size: clamp(2.8rem, 7vw, 6rem);
-      font-weight: 300;
+      font-weight: 900;
       line-height: 1.1;
       color: var(--ink);
       margin-bottom: 1.5rem;
       letter-spacing: -0.02em;
     }
 
-    .hero-title em {
+    .caixinha-titulo em {
       font-style: normal;
       color: var(--red);
     }
 
-    .hero-sub {
+    .caixinha-sub {
       font-size: 1.1rem;
       color: var(--muted);
       font-style: italic;
@@ -188,7 +174,7 @@
       line-height: 1.7;
     }
 
-    .hero-divider {
+    .caixinha-divider {
       width: 80px;
       height: 1px;
       background: var(--red);
@@ -196,7 +182,7 @@
       opacity: 0.5;
     }
 
-    /* Cartão*/
+    /* Cartões */
     .cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -253,7 +239,7 @@
       margin-bottom: 0.75rem;
     }
 
-    .card-title {
+    .card-titulo {
       font-family: 'Cinzel', serif;
       font-size: 0.8rem;
       letter-spacing: 0.2em;
@@ -283,28 +269,29 @@
 
 
 
-
     footer {
       margin-top: 8rem;
       padding: 3rem;
       border-top: 1px solid var(--border);
-      text-align: center;
+      background: rgba(245,239,224,0.92);
+      height: 200px;
+
     }
 
-    .footer-kanji {
-      font-family: 'Noto Serif JP', serif;
-      font-size: 2rem;
-      color: var(--red);
-      opacity: 0.3;
-      display: block;
-      margin-bottom: 1rem;
-    }
 
     footer p {
       font-family: 'Cinzel', serif;
       font-size: 0.65rem;
       letter-spacing: 0.3em;
       color: var(--muted);
+      text-transform: uppercase;
+    }
+    footer a {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      color: var(--red);
+      text-decoration: none;
       text-transform: uppercase;
     }
 

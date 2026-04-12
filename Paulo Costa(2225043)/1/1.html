@@ -1,12 +1,526 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Document</title>
-          <link rel="stylesheet" href="style1.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>服飾 — Moda Japonesa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Cinzel:wght@400;600&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1008;
+      --paper: #f5efe0;
+      --washi: #ede3cc;
+      --red: #c0392b;
+      --red-dark: #8b1a1a;
+      --gold: #b8860b;
+      --muted: #7a6a50;
+      --border: rgba(26,16,8,0.15);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'IM Fell English', serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 1000; opacity: 0.6;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+      background: rgba(245,239,224,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border); height: 64px;
+      display: flex; align-items: center;
+    }
+    .nav-inner {
+      width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 3rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { font-family: 'Noto Serif JP', serif; font-size: 1.4rem; color: var(--red); text-decoration: none; }
+    .nav-links { display: flex; gap: 3rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--muted); text-decoration: none;
+      position: relative; transition: color 0.3s;
+    }
+    .nav-links a.active { color: var(--red); }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 1px; background: var(--red);
+      transition: width 0.35s ease;
+    }
+    .nav-links a:hover { color: var(--red); }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: 140px 3rem 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: end;
+      gap: 4rem;
+    }
+
+    .page-header::after {
+      content: '服飾';
+      font-family: 'Noto Serif JP', serif;
+      font-size: 22vw;
+      font-weight: 700;
+      color: var(--red);
+      opacity: 0.05;
+      position: absolute;
+      right: -2vw;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      line-height: 1;
+    }
+
+    .header-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--red);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .header-label::before {
+      content: '一';
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.2rem;
+      opacity: 0.5;
+    }
+
+    h1.page-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--ink);
+    }
+
+    h1.page-title em {
+      font-style: normal;
+      font-size: 1.5rem;
+      color: var(--muted);
+      display: block;
+      margin-top: 0.5rem;
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+    }
+
+    .header-text {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .header-text p + p { margin-top: 1rem; }
+
+    /* DIVIDER */
+    .section-divider {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 3rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 5rem;
+    }
+
+    .section-divider::before, .section-divider::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+
+    .divider-kanji {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.2rem;
+      color: var(--red);
+      opacity: 0.4;
+    }
+
+    /* CONTENT SECTIONS */
+    .content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 3rem;
+    }
+
+    .section {
+      margin-bottom: 7rem;
+    }
+
+    .section-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    h2.section-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 2rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    h2.section-title::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0.2em;
+      width: 3px; height: 1.4em;
+      background: var(--red);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .three-col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    p.body-text {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    p.body-text + p.body-text { margin-top: 1.2rem; }
+
+    /* STYLE CARDS */
+    .style-card {
+      border: 1px solid var(--border);
+      padding: 2rem;
+      background: rgba(255,255,255,0.35);
+      transition: transform 0.3s, background 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .style-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255,255,255,0.6);
+    }
+
+    .style-card-icon {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 2.5rem;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .style-card h3 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
+
+    .style-card p {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* QUOTE */
+    blockquote.washi-quote {
+      border-left: 3px solid var(--red);
+      padding: 1.5rem 2rem;
+      margin: 3rem 0;
+      background: rgba(192,57,43,0.04);
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--ink);
+      line-height: 1.8;
+    }
+
+    blockquote.washi-quote cite {
+      display: block;
+      margin-top: 0.75rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      font-family: 'Cinzel', serif;
+      font-style: normal;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    /* TIMELINE */
+    .timeline {
+      position: relative;
+      padding-left: 3rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--red), transparent);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -3rem; top: 0.4rem;
+      width: 9px; height: 9px;
+      border: 1px solid var(--red);
+      background: var(--paper);
+      transform: rotate(45deg);
+    }
+
+    .timeline-date {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      color: var(--red);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .timeline-item h3 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-item p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* BACK / FOOTER */
+    .back-nav {
+      max-width: 1200px;
+      margin: 0 auto 2rem;
+      padding: 0 3rem;
+    }
+
+    .back-link {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .back-link:hover { color: var(--red); }
+
+    footer {
+      margin-top: 6rem;
+      padding: 3rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .footer-kanji {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 2rem;
+      color: var(--red);
+      opacity: 0.3;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    footer p {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 768px) {
+      .page-header, .two-col { grid-template-columns: 1fr; }
+      .three-col { grid-template-columns: 1fr; }
+      .content, .nav-inner, .back-nav, .section-divider { padding: 0 1.5rem; }
+      .page-header { padding: 120px 1.5rem 60px; }
+    }
+  </style>
 </head>
 <body>
-          
+
+  <nav>
+    <div class="nav-inner">
+      <a href="Index.html" class="nav-logo">日本</a>
+      <ul class="nav-links">
+        <li><a href="1.html" class="active">Moda</a></li>
+        <li><a href="2.html">Katanas</a></li>
+        <li><a href="3.html">Curiosidades</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="page-header">
+    <div>
+      <div class="header-label">Página Um · Moda</div>
+      <h1 class="page-title">
+        Moda Japonesa
+        <em>服飾の美学</em>
+      </h1>
+    </div>
+    <div class="header-text">
+      <p>Do quimono de seda ao streetwear de Harajuku, o Japão sempre transformou a roupa em linguagem — entre disciplina e rebeldia, cada peça conta uma história de séculos.</p>
+      <p>Explora os estilos, os rituais e a filosofia por detrás de uma das culturas de moda mais ricas do mundo.</p>
+    </div>
+  </header>
+
+  <div class="section-divider"><span class="divider-kanji">◆</span></div>
+
+  <main class="content">
+
+    <!-- SECTION 1: Quimono -->
+    <section class="section">
+      <span class="section-label">Tradição</span>
+      <div class="two-col">
+        <div>
+          <h2 class="section-title">O Quimono<br>着物</h2>
+          <p class="body-text">O <em>kimono</em> — literalmente "coisa para vestir" — é muito mais do que uma peça de vestuário. É um repositório de significados, estações, ocasiões e hierarquia social. A sua forma em T é praticamente inalterada há mais de mil anos.</p>
+          <p class="body-text">Cada detalhe tem um significado: o comprimento das mangas indica o estado civil, os padrões florais reflectem as estações do ano, e as cores comunicam a idade e a ocasião. Vestir um quimono é, em si, uma arte — o processo de envolver e atar o <em>obi</em> (faixa) pode demorar mais de trinta minutos.</p>
+          <p class="body-text">Hoje o quimono é reservado para casamentos, festivais de Verão (<em>yukata</em>, a versão mais leve) e cerimónias formais — mas uma nova geração de estilistas japoneses está a reinventá-lo para o quotidiano moderno.</p>
+        </div>
+        <div>
+          <blockquote class="washi-quote">
+            "O quimono não é uma moda — é uma filosofia de como o corpo habita o espaço."
+            <cite>— Issey Miyake, designer japonês</cite>
+          </blockquote>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <span class="timeline-date">Período Heian · Séc. X</span>
+              <h3>Origem do Junihitoe</h3>
+              <p>As nobres da corte vestiam até doze camadas de quimonos sobrepostos, com cores calculadas ao milímetro.</p>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-date">Período Edo · Séc. XVII</span>
+              <h3>O Quimono Popular</h3>
+              <p>O quimono torna-se acessível à classe comerciante. Surgem os primeiros padrões de <em>yuzen</em> — tingimento manual em seda.</p>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-date">Meiji · Séc. XIX</span>
+              <h3>Ocidentalização</h3>
+              <p>O governo Meiji promove o vestuário ocidental. O quimono começa a ser reservado para ocasiões especiais.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"><span class="divider-kanji">◆</span></div>
+
+    <!-- SECTION 2: Estilos Urbanos -->
+    <section class="section">
+      <span class="section-label">Cultura Contemporânea</span>
+      <h2 class="section-title">Estilos Urbanos<br>ストリートファッション</h2>
+      <p class="body-text" style="max-width:700px; margin-bottom: 3rem;">Harajuku, um bairro de Tóquio, tornou-se a capital mundial dos subculturismos de moda. Nos anos 90, jovens japoneses começaram a misturar referências de forma absolutamente singular — o resultado foi uma explosão de estilos que influencia a moda global até hoje.</p>
+
+      <div class="three-col">
+        <div class="style-card">
+          <span class="style-card-icon">🌸</span>
+          <h3>Lolita Fashion</h3>
+          <p>Inspirada na moda vitoriana e nos bonecos de porcelana, a estética Lolita valoriza saias balão, laços e rendas. Uma afirmação de inocência estilizada numa sociedade de alta pressão.</p>
+        </div>
+        <div class="style-card">
+          <span class="style-card-icon">⛩️</span>
+          <h3>Wabi-Sabi Wear</h3>
+          <p>Roupa que abraça a imperfeição — tecidos envelhecidos, assimetria intencional, formas desconstruídas. A filosofia budista do <em>wabi-sabi</em> transformada em guarda-roupa.</p>
+        </div>
+        <div class="style-card">
+          <span class="style-card-icon">🔮</span>
+          <h3>Visual Kei</h3>
+          <p>Nascido do rock japonês dos anos 80, o Visual Kei combina maquilhagem dramática, cabelo elaborado e roupas que oscilam entre o gótico, o glam e o tradicional japonês.</p>
+        </div>
+        <div class="style-card">
+          <span class="style-card-icon">🏯</span>
+          <h3>Mori Girl</h3>
+          <p>A "rapariga da floresta" — camadas de tecidos naturais, linho e algodão em tons terrosos, inspirados numa vida simples e próxima da natureza.</p>
+        </div>
+        <div class="style-card">
+          <span class="style-card-icon">⚡</span>
+          <h3>Techwear Japonês</h3>
+          <p>Marcas como Acronym e as suas inspirações japonesas produzem roupas funcionais de alta tecnologia — bolsos modulares, impermeabilidade e uma estética futurista urbana.</p>
+        </div>
+        <div class="style-card">
+          <span class="style-card-icon">🎭</span>
+          <h3>Gyaru</h3>
+          <p>A subcultura <em>gyaru</em> surgiu como desafio aos ideais de beleza japoneses — pele bronzeada, cabelo louro, unhas elaboradas. Uma rebeldia estilizada e feminina.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"><span class="divider-kanji">◆</span></div>
+
+    <!-- SECTION 3: Designers -->
+    <section class="section">
+      <span class="section-label">Alta Costura</span>
+      <h2 class="section-title">Grandes Designers<br>デザイナー</h2>
+      <div class="two-col">
+        <div>
+          <p class="body-text">O Japão produziu alguns dos nomes mais revolucionários da moda mundial. Nos anos 80, uma geração de designers japoneses chegou a Paris e destruiu completamente os cânones ocidentais.</p>
+          <p class="body-text"><strong style="color:var(--ink)">Rei Kawakubo</strong> (Comme des Garçons) introduziu o conceito de "moda não-moda" — roupas intencionalmente assimétricas, destruídas, incompletas. O seu desfile de 1981 em Paris foi apelidado de "Hiroshima Chic" pela crítica — inicialmente um insulto, hoje um marco histórico.</p>
+          <p class="body-text"><strong style="color:var(--ink)">Yohji Yamamoto</strong> trabalha o preto e a sobreposição de volumes numa linguagem poética e filosófica. Para Yamamoto, a roupa é resistência.</p>
+        </div>
+        <div>
+          <p class="body-text"><strong style="color:var(--ink)">Issey Miyake</strong> explorou a relação entre corpo, tecido e espaço como nenhum outro. A sua linha <em>Pleats Please</em> usa tecnologia de plissagem para criar roupas que cabem num envelope.</p>
+          <p class="body-text"><strong style="color:var(--ink)">Kenzo Takada</strong> foi o primeiro designer japonês a abrir uma boutique em Paris, em 1970. Misturou o artesanato japonês com a liberdade das cores tropicais — uma revolução alegre.</p>
+          <blockquote class="washi-quote" style="margin-top:2rem">
+            "A moda não é arte — mas pode ter a mesma intensidade."
+            <cite>— Yohji Yamamoto</cite>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="back-nav">
+    <a href="Index.html" class="back-link">← Voltar ao início</a>
+  </div>
+
+  <footer>
+    <span class="footer-kanji">服</span>
+    <p>Projeto Escolar · Cultura Japonesa · 2025</p>
+  </footer>
+
 </body>
 </html>
