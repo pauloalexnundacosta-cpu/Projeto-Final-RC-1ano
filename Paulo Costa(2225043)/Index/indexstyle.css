@@ -21,7 +21,7 @@
       
     }
 
-    /* NAVes */
+    /* NAV bar*/
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -54,14 +54,14 @@
       letter-spacing: 0.1em;
     }
 
-    /* Links de navegação */
+    /* Estilo dos links de navegação */
     .nav-links {
       display: flex;
       gap: 3rem;
       list-style: none;
     }
 
-    /* Estilo dos links de navegação */
+
     .nav-links a {
       font-family: 'Cinzel', serif;
       font-size: 0.72rem;

@@ -19,31 +19,55 @@
       overflow-x: hidden;
     }
 
+    /*seguddo backgroud*/
     body::before {
       content: '';
       position: fixed; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none; z-index: 1000; opacity: 0.6;
+      background: url(/1/1/imagens1/fundo1.jpg) center/cover no-repeat;
+      pointer-events: none; z-index: 1000; opacity: 0.2;
     }
 
-    /* NAV */
+    /* NAV bar */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+      position: relative; top: 0; left: 0; right: 0; z-index: 500;
       background: rgba(245,239,224,0.92); backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border); height: 64px;
       display: flex; align-items: center;
     }
+
+    /* centraliza o conteúdo da nav e espaça os itens */
     .nav-inner {
       width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 3rem;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .nav-logo { font-family: 'Noto Serif JP', serif; font-size: 1.4rem; color: var(--red); text-decoration: none; }
-    .nav-links { display: flex; gap: 3rem; list-style: none; }
+    
+    /* Logos em vermelho JAPÃO */
+    .nav-logo { 
+        font-family: 'Noto Serif JP', serif;
+        font-size: 1.4rem;
+        color: var(--red);
+        text-decoration: none; 
+        letter-spacing: 0.1em;
+      }
+        
+    /* Estilo dos links de navegação */ 
+    .nav-links { 
+        display: flex;
+        gap: 3rem;
+        list-style: none;
+       }
+
     .nav-links a {
-      font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--muted); text-decoration: none;
-      position: relative; transition: color 0.3s;
+      font-family: 'Cinzel', serif;
+       font-size: 0.72rem;
+        letter-spacing: 0.18em;
+      text-transform: uppercase;
+       color: var(--muted);
+        text-decoration: none;
+      position: relative;
+       transition: color 0.3s;
     }
+
     .nav-links a.active { color: var(--red); }
     .nav-links a::after {
       content: ''; position: absolute; bottom: -4px; left: 0;
@@ -53,8 +77,9 @@
     .nav-links a:hover { color: var(--red); }
     .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 
-    /* PAGE HEADER */
-    .page-header {
+
+    /* Headerr */
+    .pag-cabeca {
       padding: 140px 3rem 80px;
       max-width: 1200px;
       margin: 0 auto;
@@ -65,7 +90,8 @@
       gap: 4rem;
     }
 
-    .page-header::after {
+    
+    .pag-cabeca::after {
       content: '服飾';
       font-family: 'Noto Serif JP', serif;
       font-size: 22vw;
@@ -80,9 +106,11 @@
       line-height: 1;
     }
 
-    .header-label {
+    
+    .cabeca-label {
       font-family: 'Cinzel', serif;
-      font-size: 0.7rem;
+      font-size: 0.9rem;
+      font-weight: 1000;
       letter-spacing: 0.4em;
       text-transform: uppercase;
       color: var(--red);
@@ -92,24 +120,25 @@
       margin-bottom: 1.5rem;
     }
 
-    .header-label::before {
+    .cabeca-label::before {
       content: '一';
       font-family: 'Noto Serif JP', serif;
       font-size: 1.2rem;
+      font-weight: 1000;
       opacity: 0.5;
     }
 
-    h1.page-title {
+    h1.pag-title {
       font-family: 'Noto Serif JP', serif;
-      font-size: clamp(3rem, 6vw, 5.5rem);
-      font-weight: 300;
+      font-size: clamp(2.0rem, 5vw, 5rem);
+      font-weight: 600;
       line-height: 1.1;
       color: var(--ink);
     }
 
-    h1.page-title em {
+    h1.pag-title em {
       font-style: normal;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       color: var(--muted);
       display: block;
       margin-top: 0.5rem;
@@ -117,14 +146,14 @@
       font-style: italic;
     }
 
-    .header-text {
-      font-size: 1.05rem;
+    .cabeca-text {
+      font-size: 1.2rem;
       line-height: 1.85;
       color: var(--muted);
       font-style: italic;
     }
 
-    .header-text p + p { margin-top: 1rem; }
+    .cabeca-text p + p { margin-top: 1rem; }
 
     /* DIVIDER */
     .section-divider {
@@ -201,7 +230,7 @@
     }
 
     p.body-text {
-      font-size: 1rem;
+      font-size: 1.2rem;;
       line-height: 1.9;
       color: var(--muted);
       font-style: italic;
@@ -362,9 +391,106 @@
       text-transform: uppercase;
     }
 
+    /* IMAGENS DE CONTEÚDO */
+    .section-image {
+      margin-top: 2rem;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(26,16,8,0.18);
+      border: 1px solid var(--border);
+    }
+    .content-img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .content-img:hover { transform: scale(1.03); }
+
+    /* BANNER HARAJUKU */
+    .harajuku-banner {
+      position: relative;
+      width: 100%;
+      height: 340px;
+      overflow: hidden;
+      border-radius: 4px;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 8px 32px rgba(26,16,8,0.2);
+      border: 1px solid var(--border);
+    }
+    .harajuku-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .harajuku-banner:hover .harajuku-img { transform: scale(1.04); }
+    .harajuku-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1rem 1.5rem;
+      background: linear-gradient(transparent, rgba(26,16,8,0.65));
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(245,239,224,0.85);
+    }
+
+    /* IMAGENS NOS CARDS */
+    .card-img {
+      width: calc(100% + 2rem);
+      margin: -1.5rem -1rem 1.2rem -1rem;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+      border-radius: 4px 4px 0 0;
+      transition: transform 0.4s ease;
+    }
+    .style-card:hover .card-img { transform: scale(1.04); }
+
+    /* FOTO DO DESIGNER */
+    .designer-photo {
+      margin-top: 2rem;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(26,16,8,0.18);
+      border: 1px solid var(--border);
+      position: relative;
+    }
+    .designer-img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: grayscale(20%);
+      transition: filter 0.4s ease, transform 0.5s ease;
+    }
+    .designer-photo:hover .designer-img {
+      filter: grayscale(0%);
+      transform: scale(1.03);
+    }
+    .designer-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 0.8rem 1.2rem;
+      background: linear-gradient(transparent, rgba(26,16,8,0.6));
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(245,239,224,0.9);
+    }
+
     @media (max-width: 768px) {
       .page-header, .two-col { grid-template-columns: 1fr; }
       .three-col { grid-template-columns: 1fr; }
       .content, .nav-inner, .back-nav, .section-divider { padding: 0 1.5rem; }
       .page-header { padding: 120px 1.5rem 60px; }
+      .harajuku-banner { height: 220px; }
+      .card-img { height: 140px; }
     }
