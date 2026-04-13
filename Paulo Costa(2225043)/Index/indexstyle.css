@@ -14,24 +14,11 @@
 
     body {
       background-image: url(imagensindex/indexback.jpg); 
-      color: var(--ink);
       font-family: 'IM Fell English', serif;
       min-height: 100vh;
       overflow-x: hidden;
+      backdrop-filter: blur(2px);
       
-    }
-
-    /* textura overlay */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 1000;
-      opacity: 0.6;
-      background-filter: blur(2.8px);
     }
 
     /* NAVes */
@@ -47,6 +34,7 @@
       align-items: center;
     }
 
+    /* centraliza o conteúdo da nav e espaça os itens */
     .nav-inner {
       width: 100%;
       max-width: 1200px;
@@ -56,7 +44,8 @@
       align-items: center;
       justify-content: space-between;
     }
-
+    
+    /* Logos em vermelho JAPÃO */
     .nav-logo {
       font-family: 'Noto Serif JP', serif;
       font-size: 1.4rem;
@@ -65,12 +54,14 @@
       letter-spacing: 0.1em;
     }
 
+    /* Links de navegação */
     .nav-links {
       display: flex;
       gap: 3rem;
       list-style: none;
     }
 
+    /* Estilo dos links de navegação */
     .nav-links a {
       font-family: 'Cinzel', serif;
       font-size: 0.72rem;
@@ -82,6 +73,7 @@
       transition: color 0.3s;
     }
 
+    /* Efeito dos Links */
     .nav-links a::after {
       content: '';
       position: absolute;
@@ -95,8 +87,9 @@
     .nav-links a:hover::after { width: 100%; }
 
 
+    /* Seção(caixa) principal */
     .caixinha {
-      min-height: 100vh;
+      min-height: 105vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -106,13 +99,7 @@
     }
 
 
-    /* linha vertical */
-    .caixinha::after { 
-      content: '';
-      opacity: 0.3;
-    }
-
-
+    /* Forma da caixa principal */
     .caixinha-content {
       text-align: center;
       position: relative;
@@ -120,6 +107,7 @@
       animation: fadeUp 1.2s ease both;
     }
 
+    /* Caraceter especial do fundo */
     .caixinha-kanji {
       font-family: 'Noto Serif JP', serif;
       font-size: clamp(5rem, 18vw, 14rem);
@@ -136,9 +124,10 @@
       animation: fadeIn 2s ease both;
     }
 
+    /* Título incial */
     .caixinha-eyebrow {
       font-family: 'Cinzel', serif;
-      font-size: 0.8rem;
+      font-size: 1.3rem;
       letter-spacing: 0.4em;
       text-transform: uppercase;
       color: var(--muted);
@@ -148,6 +137,7 @@
       animation: fadeUp 1s 0.2s ease both;
     }
 
+    /* Título principal JAPÃO */
     .caixinha-titulo {
       font-family: 'Noto Serif JP', serif;
       font-size: clamp(2.8rem, 7vw, 6rem);
@@ -158,29 +148,12 @@
       letter-spacing: -0.02em;
     }
 
+    /* estilo para careter espcial outra vez */
     .caixinha-titulo em {
       font-style: normal;
       color: var(--red);
     }
 
-    .caixinha-sub {
-      font-size: 1.1rem;
-      color: var(--muted);
-      font-style: italic;
-      margin-bottom: 3.5rem;
-      max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.7;
-    }
-
-    .caixinha-divider {
-      width: 80px;
-      height: 1px;
-      background: var(--red);
-      margin: 0 auto 3.5rem;
-      opacity: 0.5;
-    }
 
     /* Cartões */
     .cards {
@@ -191,6 +164,7 @@
       margin: 0 auto;
     }
 
+    /* Estrutura dos cartões */
     .card {
       display: block;
       text-decoration: none;
@@ -203,10 +177,13 @@
       animation: fadeUp 0.8s ease both;
     }
 
+    /* Animação dos cartões com delay para cada um */
     .card:nth-child(1) { animation-delay: 0.4s; }
     .card:nth-child(2) { animation-delay: 0.55s; }
     .card:nth-child(3) { animation-delay: 0.7s; }
 
+
+    /* Efeito borda vermelha por baixo, animação dos cartões ao interagir */
     .card::before {
       content: '';
       position: absolute;
@@ -218,19 +195,22 @@
       transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
     }
 
+    /* Efeito nos cartões de antes e depois de passar o mouse */
     .card:hover { background: rgba(255,255,255,0.7); transform: translateY(-4px); }
     .card:hover::before { transform: scaleX(1); }
 
+    /*fonte dos numeros em jp*/
     .card-num {
       font-family: 'Noto Serif JP', serif;
       font-size: 2.5rem;
       font-weight: 300;
       color: var(--red);
-      opacity: 0.3;
+      opacity: 0.5;
       display: block;
       margin-bottom: 0.5rem;
     }
 
+    /* fonte dos caracteres especiais do cartão */
     .card-kanji {
       font-family: 'Noto Serif JP', serif;
       font-size: 1.6rem;
@@ -239,6 +219,7 @@
       margin-bottom: 0.75rem;
     }
 
+    /* fonte do título do cartão */
     .card-titulo {
       font-family: 'Cinzel', serif;
       font-size: 0.8rem;
@@ -249,6 +230,7 @@
       margin-bottom: 1rem;
     }
 
+    /* fonte da descrição do cartão */
     .card-desc {
       font-size: 0.88rem;
       color: var(--muted);
@@ -256,6 +238,7 @@
       font-style: italic;
     }
 
+    /* fonte da seta do cartão */
     .card-arrow {
       display: inline-block;
       margin-top: 1.5rem;
@@ -267,16 +250,14 @@
     }
 
 
-
-
+    /* Rodapé da página */
     footer {
       margin-top: 8rem;
       padding: 3rem;
       border-top: 1px solid var(--border);
       background: rgba(245,239,224,0.92);
       height: 200px;
-
-    }
+    } 
 
 
     footer p {
