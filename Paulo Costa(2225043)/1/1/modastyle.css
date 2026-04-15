@@ -91,22 +91,6 @@
     }
 
     
-    .pag-cabeca::after {
-      content: '服飾';
-      font-family: 'Noto Serif JP', serif;
-      font-size: 22vw;
-      font-weight: 700;
-      color: var(--red);
-      opacity: 0.05;
-      position: absolute;
-      right: -2vw;
-      top: 50%;
-      transform: translateY(-50%);
-      pointer-events: none;
-      line-height: 1;
-    }
-
-    
     .cabeca-label {
       font-family: 'Cinzel', serif;
       font-size: 0.9rem;
@@ -238,7 +222,7 @@
 
     p.body-text + p.body-text { margin-top: 1.2rem; }
 
-    /* STYLE CARDS */
+    /* CARTOES */
     .style-card {
       border: 1px solid var(--border);
       padding: 2rem;
@@ -253,12 +237,7 @@
       background: rgba(255,255,255,0.6);
     }
 
-    .style-card-icon {
-      font-family: 'Noto Serif JP', serif;
-      font-size: 2.5rem;
-      display: block;
-      margin-bottom: 1rem;
-    }
+
 
     .style-card h3 {
       font-family: 'Noto Serif JP', serif;

@@ -17,7 +17,7 @@
       font-family: 'IM Fell English', serif;
       min-height: 100vh;
       overflow-x: hidden;
-      backdrop-filter: blur(2px);
+      backdrop-filter: blur(1px);
       
     }
 
@@ -177,7 +177,7 @@
       animation: fadeUp 0.8s ease both;
     }
 
-    /* Animação dos cartões com delay para cada um */
+    /* Delays para cada os cartoes */
     .card:nth-child(1) { animation-delay: 0.4s; }
     .card:nth-child(2) { animation-delay: 0.55s; }
     .card:nth-child(3) { animation-delay: 0.7s; }
@@ -282,10 +282,6 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
 
     @keyframes scrollPulse {
       0%, 100% { transform: scaleY(1); opacity: 0.4; }
@@ -293,7 +289,7 @@
     }
 
     /* responsivo */
-    @media (max-width: 700px) {
+    @media (max-width: 400px) {
       .cards { grid-template-columns: 1fr; }
       .nav-links { gap: 1.5rem; }
       .nav-inner { padding: 0 1.5rem; }
