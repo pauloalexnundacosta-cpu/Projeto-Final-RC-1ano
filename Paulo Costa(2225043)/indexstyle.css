@@ -52,7 +52,6 @@
       font-size: 1.4rem;
       color: var(--red);
       text-decoration: none;
-      letter-spacing: 0.1em;
     }
 
     /* Estilo dos links de navegação */
@@ -289,7 +288,7 @@
       50%       { transform: scaleY(0.5); opacity: 0.8; }
     }
 
-    /* responsivo */
+    /* Tamanhos para telemoveis */
     @media (max-width: 400px) {
       .cards { grid-template-columns: 1fr; }
       .nav-links { gap: 1.5rem; }

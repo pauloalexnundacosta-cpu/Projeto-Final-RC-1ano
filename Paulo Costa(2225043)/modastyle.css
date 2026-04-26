@@ -23,7 +23,7 @@
     body::before {
       content: '';
       position: fixed; inset: 0;
-      background: url(/1/1/imagens1/fundo1.jpg) center/cover no-repeat;
+      background: url(/imagens1/fundo1.jpg) center/cover no-repeat;
       pointer-events: none; z-index: 1000; opacity: 0.2;
     }
 
@@ -47,7 +47,6 @@
         font-size: 1.4rem;
         color: var(--red);
         text-decoration: none; 
-        letter-spacing: 0.1em;
       }
         
     /* Estilo dos links de navegação */ 
@@ -78,7 +77,7 @@
     .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 
 
-    /* Headerr */
+    /* CABEÇA */
     .pag-cabeca {
       padding: 140px 3rem 80px;
       max-width: 1200px;
@@ -328,7 +327,7 @@
       font-style: italic;
     }
 
-    /* BACK / FOOTER */
+    /* VOLTAR / Pé do site */
     .back-nav {
       max-width: 1200px;
       margin: 0 auto 2rem;
@@ -370,7 +369,7 @@
       text-transform: uppercase;
     }
 
-    /* IMAGENS DE CONTEÚDO */
+    /* IMAGENS */
     .section-image {
       margin-top: 2rem;
       border-radius: 4px;
