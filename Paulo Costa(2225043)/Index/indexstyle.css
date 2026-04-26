@@ -1,4 +1,5 @@
-   :root {
+   /*Root para definir cores*/
+   :root { 
       --ink: #1a1008;
       --washi: #ede3cc;
       --red: #c0392b;
@@ -8,7 +9,7 @@
       --border: rgba(26,16,8,0.15);
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; } /*reste global para todos os elementos da pagina*/
 
     html { scroll-behavior: smooth; }
 
