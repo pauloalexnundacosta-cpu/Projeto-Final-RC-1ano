@@ -25,7 +25,7 @@
       pointer-events: none; z-index: 1000; opacity: 0.2;
     }
 
-    /* NAV */
+    /* NAV boy */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 500;
       background: rgba(240,236,224,0.92); backdrop-filter: blur(12px);
@@ -81,8 +81,8 @@
      }
      
 
-    /* DRAMATIC HERO */
-    .blade-hero {
+    /* katana header */
+    .cabeca-espaco {
       min-height: 50vh;
       padding: 140px 3rem 80px;
       max-width: 1200px;
@@ -94,23 +94,8 @@
       position: relative;
     }
 
-    .blade-hero::after {
-      content: '刀';
-      font-family: 'Noto Serif JP', serif;
-      font-size: 30vw;
-      font-weight: 700;
-      color: var(--steel);
-      opacity: 0.04;
-      position: absolute;
-      right: -3vw;
-      top: 50%;
-      transform: translateY(-50%);
-      pointer-events: none;
-      line-height: 1;
-    }
-
-    /* Decorative blade line */
-    .blade-line {
+    /* linha do header */
+    .cabeca-line {
       position: absolute;
       left: 50%;
       top: 0;
@@ -134,7 +119,7 @@
     }
 
     .cabeca-label::before {
-      content: '一';
+      content: '二';
       font-family: 'Noto Serif JP', serif;
       font-size: 1.2rem;
       font-weight: 1000;
@@ -147,15 +132,7 @@
       font-weight: 600;
       line-height: 1.1;
     }
-    h1.page-title em {
-      font-style: normal;
-       font-size: 1.5rem;
-        color: var(--muted);
-      display: block;
-       margin-top: 0.5rem;
-        font-family: 'IM Fell English', serif;
-         font-style: italic;
-    }
+
 
     .cabeca-text {
       font-size: 1.2rem;
@@ -163,10 +140,11 @@
       color: var(--muted);
       font-style: italic;
          }
-
+    /*formatar texto*/
     .cabeca-text p + p { margin-top: 1rem; }
 
-    /* DIVIDER */
+
+    /* dedicaco apenas para o divisor entre sessoes */
     .section-divider {
       max-width: 1200px;
        margin: 0 auto;
@@ -261,7 +239,7 @@
     .content-img:hover { transform: scale(1.03); }
 
 
-    /* BLADE ANATOMY */
+    /* tabela da anatomia */
     .anatomy-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -303,7 +281,7 @@
       font-style: italic;
     }
 
-    /* FORGE STEPS */
+    /* Forja parte */
     .forge-steps {
       counter-reset: step;
     }

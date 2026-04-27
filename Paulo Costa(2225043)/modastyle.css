@@ -23,7 +23,7 @@
     body::before {
       content: '';
       position: fixed; inset: 0;
-      background: url(/imagens1/fundo1.jpg) center/cover no-repeat;
+      background: url(imagens1/fundo1.jpg) center/cover no-repeat;
       pointer-events: none; z-index: 1000; opacity: 0.2;
     }
 
@@ -275,13 +275,13 @@
       text-transform: uppercase;
     }
 
-    /* TIMELINE */
-    .timeline {
+    /* TEMPO/EPOCA */
+    .HEIAN {
       position: relative;
       padding-left: 3rem;
     }
 
-    .timeline::before {
+    .HEIAN::before {
       content: '';
       position: absolute;
       left: 0; top: 0; bottom: 0;
@@ -289,12 +289,12 @@
       background: linear-gradient(to bottom, var(--red), transparent);
     }
 
-    .timeline-item {
+    .HEIAN-item {
       position: relative;
       margin-bottom: 3rem;
     }
 
-    .timeline-item::before {
+    .HEIAN-item::before {
       content: '';
       position: absolute;
       left: -3rem; top: 0.4rem;
@@ -304,7 +304,7 @@
       transform: rotate(45deg);
     }
 
-    .timeline-date {
+    .HEIAN-date {
       font-family: 'Cinzel', serif;
       font-size: 0.7rem;
       letter-spacing: 0.25em;
@@ -314,13 +314,13 @@
       display: block;
     }
 
-    .timeline-item h3 {
+    .HEIAN-item h3 {
       font-family: 'Noto Serif JP', serif;
       font-size: 1.1rem;
       margin-bottom: 0.5rem;
     }
 
-    .timeline-item p {
+    .HEIAN-item p {
       font-size: 0.9rem;
       line-height: 1.7;
       color: var(--muted);
