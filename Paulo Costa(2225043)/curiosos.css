@@ -51,13 +51,6 @@
       position: relative;
     }
 
-    .cabebca-espaco::after {
-      content: '文化'; font-family: 'Noto Serif JP', serif;
-      font-size: 22vw; font-weight: 700; color: var(--red); opacity: 0.05;
-      position: absolute; right: -2vw; top: 50%; transform: translateY(-50%);
-      pointer-events: none; line-height: 1;
-    }
-
 
 .cabeca-label {
       font-family: 'Cinzel', serif;

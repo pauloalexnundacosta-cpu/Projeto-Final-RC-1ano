@@ -1,4 +1,4 @@
-    :root {
+   :root {
       --ink: #1a1008;
       --paper: #f0ece0;
       --washi: #ede3cc;
@@ -19,7 +19,7 @@
     }
 
     body::before {
-      content: '';
+      content: ''; /*grito de vida*/
       position: fixed; inset: 0;
       background-image: url(imagens2/fundo2.jpg);
       pointer-events: none; z-index: 1000; opacity: 0.2;
@@ -476,3 +476,5 @@
       .two-col { grid-template-columns: 1fr; }
       .content-img-side { max-width: 100%; }
     }
+
+    
